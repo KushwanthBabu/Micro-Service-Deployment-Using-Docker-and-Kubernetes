@@ -1,0 +1,21 @@
+services:
+  user-service:
+    build: ./user-service
+    restart: always
+    ports:
+      - "4000:4000"
+
+  product-service:
+    build: ./product-service
+    restart: always
+    ports:
+      - "5000:5000"
+
+  api-gateway:
+    build: ./api-gateway
+    restart: always
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service
+      - product-service
