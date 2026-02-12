@@ -1,21 +1,8 @@
-🚀 Microservices DevOps Deployment with Docker & Kubernetes
-📌 Project Overview
+**Microservices Deployment using Docker & Kubernetes**
 
-This project demonstrates deployment of a simple Node.js microservices architecture using:
+This project demonstrates deployment of a simple Node.js microservices architecture using Docker, Docker Compose, and Kubernetes (Minikube).
 
-Docker
-
-Docker Compose
-
-Kubernetes (Minikube)
-
-kubectl
-
-The goal was to understand containerization, orchestration, service discovery, and scaling.
-
-🏗 Architecture
-
-Services:
+The system consists of three services:
 
 user-service (Port 4000)
 
@@ -23,96 +10,22 @@ product-service (Port 5000)
 
 api-gateway (Port 3000)
 
-Initial communication tested via Docker Compose.
-Then deployed user-service to Kubernetes cluster using Minikube.
+I containerized each service using Docker, orchestrated them locally with Docker Compose, and then deployed the user-service to a Kubernetes cluster using Minikube.
 
-🐳 Docker Implementation
-Steps:
+Through this project, I practiced:
 
-Created Dockerfile for each service
+Containerization with Docker
 
-Built images using:
+Multi-container orchestration
 
-docker build -t user-service:latest ./user-service
+Kubernetes Deployments and Services
 
+Replica scaling
 
-Used docker-compose for local orchestration:
+NodePort exposure
 
-docker compose up --build
+Image management in Minikube
 
-Learned:
+Debugging using kubectl
 
-Containerization
-
-Docker networking
-
-Service-to-service communication
-
-Image build context
-
-Internal DNS
-
-☸ Kubernetes Deployment (Minikube)
-Cluster Setup
-minikube start --driver=docker
-kubectl get nodes
-
-Deployment
-
-Created user-deployment.yaml:
-
-Deployment with 2 replicas
-
-imagePullPolicy: Never
-
-containerPort: 4000
-
-Created user-service.yaml:
-
-Service type: NodePort
-
-NodePort: 30007
-
-Applied using:
-
-kubectl apply -f user-deployment.yaml
-kubectl apply -f user-service.yaml
-
-Image Loading Fix
-
-Since image was local, loaded it into Minikube:
-
-minikube image load user-service:latest
-
-
-Resolved:
-
-ErrImageNeverPull
-
-🌐 Accessing Service
-minikube service user-service
-
-
-Access endpoint:
-
-/users
-
-📈 Kubernetes Concepts Practiced
-
-Pod
-
-Deployment
-
-ReplicaSet
-
-Service (NodePort)
-
-ImagePullPolicy
-
-ClusterIP
-
-Node
-
-kubectl debugging
-
-Logs inspection
+This project helped me understand real-world DevOps concepts like service discovery, internal DNS, replica management, and production-style deployment workflows.
